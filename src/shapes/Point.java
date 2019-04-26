@@ -50,7 +50,7 @@ public class Point extends Shape {
     /**
      * Select point.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     public void selected(Graphics graphics) {
         graphics.setColor(Color.BLUE);
@@ -103,7 +103,7 @@ public class Point extends Shape {
      */
 
     @Override
-    public void moveTo(int x, int y) {
+    public void moveTo(int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }

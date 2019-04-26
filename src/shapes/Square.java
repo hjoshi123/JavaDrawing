@@ -26,7 +26,7 @@ public class Square extends SShape {
     /**
      * Draw square.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     public void draw(Graphics graphics) {
         graphics.setColor(getColor());
@@ -79,7 +79,7 @@ public class Square extends SShape {
     /**
      * Select square.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     public void selected(Graphics graphics) {
         graphics.setColor(Color.BLUE);
@@ -101,9 +101,8 @@ public class Square extends SShape {
      * @return Boolean that indicate if this square contains click.
      */
     public boolean containsClick(int x, int y) {
-        if (this.getUpLeft().getXcoordinate() <= x && x <= (this.getUpLeft().getXcoordinate() + side) &&
-                this.getUpLeft().getYcoordinate() <= y && y <= (this.getUpLeft().getYcoordinate() + side)) return true;
-        return false;
+        return this.getUpLeft().getXcoordinate() <= x && x <= (this.getUpLeft().getXcoordinate() + side) &&
+                this.getUpLeft().getYcoordinate() <= y && y <= (this.getUpLeft().getYcoordinate() + side);
     }
 
     /**
@@ -116,7 +115,7 @@ public class Square extends SShape {
     /**
      * Fill up square.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     public void fillUpShape(Graphics graphics) {
         graphics.setColor(getInteriorColor());

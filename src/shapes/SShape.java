@@ -13,7 +13,7 @@ public abstract class SShape extends Shape {
     /**
      * Abstract method that must implement all shapes with surface to fill their interior.
      *
-     * @param shapeForFillUp
+     * @param shapeForFillUp object of Graphics shape to be filled
      */
     public abstract void fillUpShape(Graphics shapeForFillUp);
 

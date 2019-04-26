@@ -22,7 +22,7 @@ public class Rectangle extends Square {
     /**
      * Draw rectangle.
      *
-     * @param g
+     * @param g object of Graphics class to draw
      */
     @Override
     public void draw(Graphics g) {
@@ -58,7 +58,7 @@ public class Rectangle extends Square {
     /**
      * Select rectangle.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     @Override
     public void selected(Graphics graphics) {
@@ -92,7 +92,7 @@ public class Rectangle extends Square {
     /**
      * Fill up rectangle.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     @Override
     public void fillUpShape(Graphics graphics) {

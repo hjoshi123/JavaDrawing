@@ -25,7 +25,7 @@ public class Line extends Shape {
     /**
      * Draw line.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     public void draw(Graphics graphics) {
         graphics.setColor(getColor());
@@ -70,7 +70,7 @@ public class Line extends Shape {
     /**
      * Select line.
      *
-     * @param graphics
+     * @param graphics object of Graphics class to draw
      */
     public void selected(Graphics graphics) {
         graphics.setColor(Color.BLUE);

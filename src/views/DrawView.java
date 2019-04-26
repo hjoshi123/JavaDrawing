@@ -5,7 +5,6 @@ import shapes.Shape;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Iterator;
 
 /**
  * @author hemantj
@@ -18,7 +17,7 @@ public class DrawView extends JPanel {
     public DrawView() {}
 
     /**
-     * When {@link DrawModel} change, paint changes triggered by {@link Controller.DrawController} to draw.
+     * When {@link DrawModel} change, paint changes triggered by {@link controller.DrawController} to draw.
      */
     @Override
     public void paint(Graphics g) {
