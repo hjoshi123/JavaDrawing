@@ -7,7 +7,7 @@ import java.awt.*;
  */
 public class Square extends SShape {
     private static final long serialVersionUID = 1L;
-    protected Point upLeft;
+    Point upLeft;
     protected int side;
 
     public Square() {}

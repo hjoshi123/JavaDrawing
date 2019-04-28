@@ -2,7 +2,7 @@
 *.ipr
 *.iml
 *.iws
-
+out/
 # Log file
 *.log
 
