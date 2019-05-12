@@ -1,3 +1,4 @@
+import controller.DrawController;
 import frames.DrawFrame;
 import model.DrawModel;
 
@@ -13,5 +14,6 @@ public class Application {
         frame.setTitle("Hemant Joshi Drawing");
         DrawModel model = new DrawModel();
         frame.getView().setModel(model);
+        frame.setController(new DrawController(model, frame));
     }
 }

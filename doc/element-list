@@ -1,5 +1,11 @@
+unnamed package
+adapter
+command
 controller
+dialogs
 frames
 model
+observer
 shapes
+strategy
 views

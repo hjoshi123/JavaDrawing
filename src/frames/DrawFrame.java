@@ -1,14 +1,18 @@
 package frames;
 
 import controller.DrawController;
+import observer.DrawObserver;
 import views.DrawView;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Class that contains view, all GUI elements of the application and notify controller when user does some action.
@@ -60,13 +64,15 @@ public class DrawFrame extends JFrame {
 
     public DrawFrame() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+        setIconImage(Toolkit.getDefaultToolkit().getImage(DrawFrame.class.getResource("/icons/icon.png")));
+
         Image cursorImage = toolkit.getImage(DrawFrame.class.getResource("/icons/cursor.png"));
         Image selectCursor = toolkit.getImage(DrawFrame.class.getResource("/icons/hand.png"));
         setCursor(toolkit.createCustomCursor(cursorImage, new Point(this.getX(), this.getY()), "img"));
 
         setForeground(Color.BLUE);
         setBackground(Color.WHITE);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(DrawFrame.class.getResource("/icons/icon.png")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
@@ -281,75 +287,75 @@ public class DrawFrame extends JFrame {
         activityLog.setFont(new Font("Lucida Console", Font.BOLD, 12));
         scrollPane.setViewportView(activityLog);
 
-//        mouseAdapterUpdate = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.updateShapeClicked();
-//            }
-//        };
-//
-//        mouseAdapterDelete = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.btnDeleteShapeClicked();
-//            }
-//        };
-//
-//        mouseAdapterUndo = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.undo();
-//            }
-//        };
-//
-//        mouseAdapterRedo = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.redo();
-//            }
-//        };
-//
-//        mouseAdapterNewDraw = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.newDraw();
-//            }
-//        };
-//
-//        mouseAdapterBringToBack = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.bringToBack();
-//            }
-//        };
-//
-//        mouseAdapterBringToFront = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.bringToFront();
-//            }
-//        };
-//
-//        mouseAdapterToBack = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.toBack();
-//            }
-//        };
-//
-//        mouseAdapterToFront = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.toFront();
-//            }
-//        };
-//
-//        mouseAdapterSaveDrawing = new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                controller.save();
-//            }
-//        };
+        mouseAdapterUpdate = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.updateShapeClicked();
+            }
+        };
+
+        mouseAdapterDelete = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.btnDeleteShapeClicked();
+            }
+        };
+
+        mouseAdapterUndo = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.undo();
+            }
+        };
+
+        mouseAdapterRedo = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.redo();
+            }
+        };
+
+        mouseAdapterNewDraw = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.newDraw();
+            }
+        };
+
+        mouseAdapterBringToBack = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.bringToBack();
+            }
+        };
+
+        mouseAdapterBringToFront = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.bringToFront();
+            }
+        };
+
+        mouseAdapterToBack = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.toBack();
+            }
+        };
+
+        mouseAdapterToFront = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.toFront();
+            }
+        };
+
+        mouseAdapterSaveDrawing = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                controller.save();
+            }
+        };
 
         mouseAdapterLog = new MouseAdapter() {
             @Override
@@ -371,25 +377,30 @@ public class DrawFrame extends JFrame {
             }
         };
 
-//        btnOpenDraw.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                controller.open();
-//            }
-//        });
+        btnOpenDraw.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                controller.open();
+            }
+        });
 
-//        view.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent click) {
-//                if (tglBtnDrawPoint.isSelected()) controller.btnAddPointClicked(click);
-//                else if (tglBtnDrawLine.isSelected()) controller.btnAddLineClicked(click);
-//                else if (tglBtnDrawSquare.isSelected()) controller.btnAddSquareClicked(click);
-//                else if (tglBtnDrawRectangle.isSelected()) controller.btnAddRectangleClicked(click);
-//                else if (tglBtnDrawCircle.isSelected()) controller.btnAddCircleClicked(click);
-//                else if (tglBtnDrawHexagon.isSelected()) controller.btnAddHexagonClicked(click);
-//                else if (tglBtnSelect.isSelected()) controller.btnSelectShapeClicked(click);
-//            }
-//        });
+        view.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent click) {
+                if (tglBtnDrawPoint.isSelected()) controller.btnAddPointClicked(click);
+                else if (tglBtnDrawLine.isSelected()) controller.btnAddLineClicked(click);
+                else if (tglBtnDrawSquare.isSelected()) controller.btnAddSquareClicked(click);
+                else if (tglBtnDrawRectangle.isSelected()) controller.btnAddRectangleClicked(click);
+                else if (tglBtnDrawCircle.isSelected()) controller.btnAddCircleClicked(click);
+                else if (tglBtnDrawHexagon.isSelected()) controller.btnAddHexagonClicked(click);
+                else if (tglBtnSelect.isSelected()) controller.btnSelectShapeClicked(click);
+            }
+        });
+    }
+
+    public void setController(DrawController controller) {
+        this.controller = controller;
+        controller.addPropertyChangedListener(new DrawObserver(this));
     }
 
     public DefaultListModel<String> getList() {
